@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contratos - Conciliação Ofra 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .nav {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .nav a {
+      color: #8892b0;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav a:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .nav a.active {
+      background: rgba(78, 205, 196, 0.2);
+      color: #4ecdc4;
+    }
+    .contrato {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .contrato-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .contrato-titulo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4ecdc4;
+    }
+    .contrato-data {
+      font-size: 0.85rem;
+      color: #8892b0;
+    }
+    .contrato-valor {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00d26a;
+      margin: 1rem 0;
+    }
+    .contrato-section {
+      margin-bottom: 1rem;
+    }
+    .contrato-section-title {
+      font-size: 0.8rem;
+      color: #8892b0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .partes-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .parte {
+      background: rgba(0,0,0,0.2);
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+    .parte-role {
+      font-size: 0.75rem;
+      color: #8892b0;
+      text-transform: uppercase;
+    }
+    .parte-nome {
+      font-weight: 600;
+      color: #fff;
+    }
+    .parte-doc {
+      font-size: 0.85rem;
+      color: #8892b0;
+    }
+    .pontos-lista {
+      list-style: none;
+    }
+    .pontos-lista li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .pontos-lista li:last-child {
+      border-bottom: none;
+    }
+    .ponto-icon {
+      color: #4ecdc4;
+    }
+    .prazos {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .prazo {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #ff6b6b;
+    }
+    .prazo-data {
+      font-weight: 600;
+      color: #ff6b6b;
+    }
+    .imovel-info {
+      background: rgba(0,0,0,0.2);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .imovel-endereco {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .imovel-detalhes {
+      font-size: 0.9rem;
+      color: #8892b0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📄 Contratos</h1>
+      <p class="subtitle">Conciliação Ofra 2025</p>
+    </header>
+
+    <nav class="nav">
+      <a href="index.html">📊 Dashboard</a>
+      <a href="contratos.html" class="active">📄 Contratos</a>
+    </nav>
+
+    <!-- Contrato 1: Compra e Venda -->
+    <div class="contrato">
+      <div class="contrato-header">
+        <div class="contrato-titulo">Compra e Venda de Fundo de Comércio</div>
+        <div class="contrato-data">06/02/2026</div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Partes</div>
+        <div class="partes-grid">
+          <div class="parte">
+            <div class="parte-role">Vendedora</div>
+            <div class="parte-nome">OFRA CONCEPT COMÉRCIO DE MÓVEIS LTDA</div>
+            <div class="parte-doc">CNPJ 51.773.176/0001-17</div>
+          </div>
+          <div class="parte">
+            <div class="parte-role">Comprador</div>
+            <div class="parte-nome">Davi Rogério Borges</div>
+          </div>
+          <div class="parte">
+            <div class="parte-role">Anuente/Garantidora</div>
+            <div class="parte-nome">Maria de Lourdes Baralti de Araújo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Valores</div>
+        <div class="contrato-valor">75.000,00</div>
+        <div style="color: #8892b0; font-size: 0.9rem;">Preço do fundo de comércio</div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Pontos-Chave</div>
+        <ul class="pontos-lista">
+          <li><span class="ponto-icon">→</span> Data de corte: 03/01/2026 (passivos anteriores ficam com vendedora)</li>
+          <li><span class="ponto-icon">→</span> Crédito junto à Movelmar: R$ 452.604,85</li>
+          <li><span class="ponto-icon">→</span> Apartamento recebido: R$ 285.000,00</li>
+          <li><span class="ponto-icon">→</span> Não concorrência: 5 anos em SP e região</li>
+          <li><span class="ponto-icon">→</span> Foro: São Paulo/SP</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contrato 2: Cessão do Apartamento -->
+    <div class="contrato">
+      <div class="contrato-header">
+        <div class="contrato-titulo">Cessão de Direitos - Dação em Pagamento</div>
+        <div class="contrato-data">04/02/2026</div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Partes</div>
+        <div class="partes-grid">
+          <div class="parte">
+            <div class="parte-role">Cessionária</div>
+            <div class="parte-nome">MOVELMAR – INDÚSTRIA DE MÓVEIS LTDA</div>
+            <div class="parte-doc">CNPJ 04.172.775/0001-03</div>
+          </div>
+          <div class="parte">
+            <div class="parte-role">Cedente</div>
+            <div class="parte-nome">OFRA CONCEPT COMÉRCIO DE MÓVEIS LTDA</div>
+            <div class="parte-doc">CNPJ 51.773.176/0001-17</div>
+          </div>
+          <div class="parte">
+            <div class="parte-role">Interveniente</div>
+            <div class="parte-nome">Ricardo da Silva Souza</div>
+            <div class="parte-doc">CPF 067.322.589-58</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Imóvel</div>
+        <div class="imovel-info">
+          <div class="imovel-endereco">Apartamento 54, Bloco B, 5º andar</div>
+          <div class="imovel-detalhes">
+            Condomínio Mirantes da Quitaúna<br>
+            Rua General Florêncio, Vila Quitaúna - Osasco/SP<br>
+            Área total: 70,98m² | Matrícula: 112.885
+          </div>
+        </div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Valor</div>
+        <div class="contrato-valor">285.000,00</div>
+        <div style="color: #8892b0; font-size: 0.9rem;">Dação em pagamento (crédito para móveis)</div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Prazos Importantes</div>
+        <div class="prazos">
+          <div class="prazo">
+            <span>Aprovação do projeto final</span>
+            <span class="prazo-data">20/02/2026</span>
+          </div>
+          <div class="prazo">
+            <span>Entrega dos móveis</span>
+            <span class="prazo-data">31/03/2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contrato-section">
+        <div class="contrato-section-title">Pontos-Chave</div>
+        <ul class="pontos-lista">
+          <li><span class="ponto-icon">→</span> Imóvel está alugado (locatário será comunicado)</li>
+          <li><span class="ponto-icon">→</span> Escritura com cláusula resolutiva (vinculada à entrega dos móveis)</li>
+          <li><span class="ponto-icon">→</span> Se móveis não forem entregues → cliente retoma imóvel</li>
+          <li><span class="ponto-icon">→</span> Cláusula penal: R$ 15.000,00</li>
+          <li><span class="ponto-icon">→</span> Foro: Ampére/PR</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>Reunião de conciliação: 12/02/2026</p>
+    </footer>
+  </div>
+</body>
+</html>
