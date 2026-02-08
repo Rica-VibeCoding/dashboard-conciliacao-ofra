@@ -392,12 +392,87 @@ footer {
     padding: 1rem;
   }
 
+  header {
+    margin-bottom: 1rem;
+  }
+
   header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Painel compacto no mobile */
+  .cards {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+
+  .card {
+    flex: 1;
+    border-radius: 0;
+    border: none;
+    border-left: none;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    background: transparent;
+  }
+
+  .card:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card.credito,
+  .card.debito,
+  .card.saldo {
+    border-left: none;
+  }
+
+  .card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
   }
 
   .card-value {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-count, .card-status {
+    font-size: 0.7rem;
+  }
+
+  .actions {
+    margin-bottom: 1rem;
+  }
+
+  .btn-add {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .filters label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .filters select {
+    width: 100%;
   }
 
   th, td {
