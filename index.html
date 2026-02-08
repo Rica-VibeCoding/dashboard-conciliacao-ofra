@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conciliação Ofra 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Conciliação Ofra 2025</h1>
+      <p class="subtitle">Movelmar SP — Balanço Financeiro</p>
+    </header>
+
+    <div class="cards">
+      <div class="card credito">
+        <span class="card-label">Total Créditos</span>
+        <span class="card-value" id="total-creditos">R$ 0,00</span>
+        <span class="card-count" id="count-creditos">0 lançamentos</span>
+      </div>
+      <div class="card debito">
+        <span class="card-label">Total Débitos</span>
+        <span class="card-value" id="total-debitos">R$ 0,00</span>
+        <span class="card-count" id="count-debitos">0 lançamentos</span>
+      </div>
+      <div class="card saldo">
+        <span class="card-label">Saldo</span>
+        <span class="card-value" id="saldo">R$ 0,00</span>
+        <span class="card-status" id="saldo-status"></span>
+      </div>
+    </div>
+
+    <div class="filters">
+      <label>
+        Filtrar por categoria:
+        <select id="filter-categoria">
+          <option value="">Todas</option>
+        </select>
+      </label>
+      <label>
+        Filtrar por tipo:
+        <select id="filter-tipo">
+          <option value="">Todos</option>
+          <option value="credito">Créditos</option>
+          <option value="debito">Débitos</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-container">
+      <table id="tabela-lancamentos">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Parte</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-lancamentos">
+          <tr>
+            <td colspan="6" class="loading">Carregando...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <p>Atualizado em: <span id="last-update">--</span></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
