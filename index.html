@@ -32,25 +32,16 @@
       </div>
     </div>
 
-    <div class="actions">
-      <button class="btn-add" id="btn-novo-lancamento">+ Novo Lançamento</button>
-    </div>
-
-    <div class="filters">
-      <label>
-        Filtrar por categoria:
-        <select id="filter-categoria">
-          <option value="">Todas</option>
-        </select>
-      </label>
-      <label>
-        Filtrar por tipo:
-        <select id="filter-tipo">
-          <option value="">Todos</option>
-          <option value="credito">Créditos</option>
-          <option value="debito">Débitos</option>
-        </select>
-      </label>
+    <div class="toolbar">
+      <select id="filter-categoria" title="Categoria">
+        <option value="">Categoria</option>
+      </select>
+      <select id="filter-tipo" title="Tipo">
+        <option value="">Tipo</option>
+        <option value="credito">Créditos</option>
+        <option value="debito">Débitos</option>
+      </select>
+      <button class="btn-add" id="btn-novo-lancamento">+ Novo</button>
     </div>
 
     <div class="table-container">

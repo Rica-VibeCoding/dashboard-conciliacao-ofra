@@ -7,11 +7,11 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 // Estado global
 let allData = [];
 
-// Formatar valor em reais
+// Formatar valor em reais (sem símbolo)
 function formatCurrency(value) {
   return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(value);
 }
 
