@@ -76,6 +76,9 @@ function updateTable(data) {
 // Atualizar filtro de categorias
 function updateCategoryFilter(data) {
   const select = document.getElementById('filter-categoria');
+  // Limpar opções exceto "Todas"
+  select.innerHTML = '<option value="">Todas</option>';
+  
   const categorias = [...new Set(data.map(d => d.categoria).filter(Boolean))];
   
   categorias.sort().forEach(cat => {
@@ -130,7 +133,92 @@ async function fetchData() {
   }
 }
 
-// Event listeners
+// ========== MODAL ==========
+
+const modalOverlay = document.getElementById('modal-overlay');
+const btnNovoLancamento = document.getElementById('btn-novo-lancamento');
+const btnModalClose = document.getElementById('modal-close');
+const btnCancel = document.getElementById('btn-cancel');
+const formLancamento = document.getElementById('form-lancamento');
+
+// Abrir modal
+function openModal() {
+  modalOverlay.classList.add('active');
+  // Preencher data com hoje
+  document.getElementById('input-data').value = new Date().toISOString().split('T')[0];
+  document.getElementById('input-valor').focus();
+}
+
+// Fechar modal
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  formLancamento.reset();
+}
+
+// Salvar lançamento
+async function saveLancamento(e) {
+  e.preventDefault();
+  
+  const submitBtn = formLancamento.querySelector('.btn-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Salvando...';
+  
+  const lancamento = {
+    data: document.getElementById('input-data').value,
+    tipo: document.getElementById('input-tipo').value,
+    valor: parseFloat(document.getElementById('input-valor').value),
+    categoria: document.getElementById('input-categoria').value || null,
+    parte: document.getElementById('input-parte').value || null,
+    descricao: document.getElementById('input-descricao').value || null
+  };
+  
+  try {
+    const { data, error } = await supabaseClient
+      .from('conciliacao_movelmar_sp')
+      .insert([lancamento])
+      .select();
+    
+    if (error) throw error;
+    
+    // Sucesso - fechar modal e recarregar dados
+    closeModal();
+    await fetchData();
+    
+    // Feedback visual
+    alert('Lançamento salvo com sucesso!');
+    
+  } catch (error) {
+    console.error('Erro ao salvar:', error);
+    alert('Erro ao salvar: ' + error.message);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Salvar';
+  }
+}
+
+// Event listeners do modal
+btnNovoLancamento.addEventListener('click', openModal);
+btnModalClose.addEventListener('click', closeModal);
+btnCancel.addEventListener('click', closeModal);
+formLancamento.addEventListener('submit', saveLancamento);
+
+// Fechar modal ao clicar fora
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
+    closeModal();
+  }
+});
+
+// Fechar modal com ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// ========== INIT ==========
+
+// Event listeners dos filtros
 document.getElementById('filter-categoria').addEventListener('change', applyFilters);
 document.getElementById('filter-tipo').addEventListener('change', applyFilters);
 
