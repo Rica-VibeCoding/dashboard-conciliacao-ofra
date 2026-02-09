@@ -57,7 +57,7 @@ function updateTable(data) {
   const tbody = document.getElementById('tbody-lancamentos');
   
   if (data.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" class="loading">Nenhum lançamento encontrado</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" class="loading">Nenhum lançamento encontrado</td></tr>';
     return;
   }
   
@@ -68,6 +68,7 @@ function updateTable(data) {
       <td class="valor-${item.tipo}">${formatCurrency(item.valor)}</td>
       <td>${item.categoria || '-'}</td>
       <td>${item.parte || '-'}</td>
+      <td>${item.fornecedor || '-'}</td>
       <td>${item.descricao || '-'}</td>
     </tr>
   `).join('');
@@ -129,7 +130,7 @@ async function fetchData() {
   } catch (error) {
     console.error('Erro ao buscar dados:', error);
     document.getElementById('tbody-lancamentos').innerHTML = 
-      '<tr><td colspan="6" class="loading">Erro ao carregar dados. Verifique a configuração.</td></tr>';
+      '<tr><td colspan="7" class="loading">Erro ao carregar dados. Verifique a configuração.</td></tr>';
   }
 }
 
@@ -169,6 +170,7 @@ async function saveLancamento(e) {
     valor: parseFloat(document.getElementById('input-valor').value),
     categoria: document.getElementById('input-categoria').value || null,
     parte: document.getElementById('input-parte').value || null,
+    fornecedor: document.getElementById('input-fornecedor').value || null,
     descricao: document.getElementById('input-descricao').value || null
   };
   
