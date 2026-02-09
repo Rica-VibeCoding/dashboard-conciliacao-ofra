@@ -64,7 +64,7 @@ function updateTable(data) {
   tbody.innerHTML = data.map(item => `
     <tr>
       <td>${formatDate(item.data)}</td>
-      <td class="tipo-${item.tipo}">${item.tipo === 'credito' ? '↑ Crédito' : '↓ Débito'}</td>
+      <td class="hidden tipo-${item.tipo}">${item.tipo === 'credito' ? '↑ Crédito' : '↓ Débito'}</td>
       <td class="valor-${item.tipo}">${formatCurrency(item.valor)}</td>
       <td>${item.categoria || '-'}</td>
       <td>${item.parte || '-'}</td>

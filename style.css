@@ -502,3 +502,8 @@ footer {
     width: 100%;
   }
 }
+
+/* Ocultar coluna tipo */
+.hidden {
+  display: none !important;
+}
