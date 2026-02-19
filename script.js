@@ -6,7 +6,7 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 
 // Estado global
 let allData = [];
-let editingId = null; // ID do lançamento sendo editado
+let editingId = null;
 
 // Formatar valor em reais (sem símbolo)
 function formatCurrency(value) {
@@ -73,17 +73,6 @@ function updateTable(data) {
       <td>${item.descricao || '-'}</td>
     </tr>
   `).join('');
-  
-  // Adicionar event listeners nas linhas
-  document.querySelectorAll('.row-clickable').forEach(row => {
-    row.addEventListener('click', () => {
-      const id = parseInt(row.dataset.id);
-      const lancamento = allData.find(d => d.id === id);
-      if (lancamento) {
-        openModalEdit(lancamento);
-      }
-    });
-  });
 }
 
 // Atualizar filtro de categorias
@@ -258,6 +247,40 @@ async function saveLancamento(e) {
     submitBtn.textContent = 'Salvar';
   }
 }
+
+// ========== EVENT DELEGATION (MOBILE FIX) ==========
+
+// Event delegation na tabela (funciona pra click E touch)
+function handleRowClick(target) {
+  // Buscar a linha (tr) mais próxima
+  const row = target.closest('tr.row-clickable');
+  if (!row) return;
+  
+  const id = parseInt(row.dataset.id);
+  const lancamento = allData.find(d => d.id === id);
+  if (lancamento) {
+    openModalEdit(lancamento);
+  }
+}
+
+// Desktop: click
+document.getElementById('tbody-lancamentos').addEventListener('click', (e) => {
+  handleRowClick(e.target);
+});
+
+// Mobile: touchend (mais rápido que click)
+let touchStartY = 0;
+document.getElementById('tbody-lancamentos').addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.getElementById('tbody-lancamentos').addEventListener('touchend', (e) => {
+  // Só abre se não foi scroll (diferença < 10px)
+  const touchEndY = e.changedTouches[0].clientY;
+  if (Math.abs(touchEndY - touchStartY) < 10) {
+    handleRowClick(e.target);
+  }
+}, { passive: true });
 
 // Event listeners do modal
 btnNovoLancamento.addEventListener('click', openModal);
