@@ -164,10 +164,13 @@ const btnCancel = document.getElementById('btn-cancel');
 const formLancamento = document.getElementById('form-lancamento');
 const modalTitle = document.querySelector('.modal-header h2');
 
+const btnDelete = document.getElementById('btn-delete');
+
 // Abrir modal para novo lançamento
 function openModal() {
   editingId = null;
   modalTitle.textContent = 'Novo Lançamento';
+  btnDelete.style.display = 'none';
   modalOverlay.classList.add('active');
   formLancamento.reset();
   document.getElementById('input-data').value = new Date().toISOString().split('T')[0];
@@ -178,6 +181,7 @@ function openModal() {
 function openModalEdit(lancamento) {
   editingId = lancamento.id;
   modalTitle.textContent = 'Editar Lançamento';
+  btnDelete.style.display = 'inline-block';
   modalOverlay.classList.add('active');
   
   document.getElementById('input-data').value = lancamento.data;
@@ -248,6 +252,28 @@ async function saveLancamento(e) {
   }
 }
 
+// Deletar lançamento
+async function deleteLancamento() {
+  if (!editingId) return;
+  if (!confirm('Tem certeza que quer excluir este lançamento?')) return;
+  
+  try {
+    const { error } = await supabaseClient
+      .from('conciliacao_movelmar_sp')
+      .delete()
+      .eq('id', editingId);
+    
+    if (error) throw error;
+    
+    closeModal();
+    await fetchData();
+    alert('Lançamento excluído!');
+  } catch (error) {
+    console.error('Erro ao excluir:', error);
+    alert('Erro ao excluir: ' + error.message);
+  }
+}
+
 // ========== EVENT DELEGATION (MOBILE FIX) ==========
 
 // Event delegation na tabela (funciona pra click E touch)
@@ -283,6 +309,7 @@ document.getElementById('tbody-lancamentos').addEventListener('touchend', (e) =>
 }, { passive: true });
 
 // Event listeners do modal
+btnDelete.addEventListener('click', deleteLancamento);
 btnNovoLancamento.addEventListener('click', openModal);
 btnModalClose.addEventListener('click', closeModal);
 btnCancel.addEventListener('click', closeModal);
