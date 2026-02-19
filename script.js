@@ -135,7 +135,7 @@ async function fetchData() {
     const { data, error } = await supabaseClient
       .from('conciliacao_movelmar_sp')
       .select('*')
-      .order('data', { ascending: false });
+      .order('created_at', { ascending: false });
     
     if (error) throw error;
     
