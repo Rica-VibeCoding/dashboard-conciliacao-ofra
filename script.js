@@ -282,7 +282,7 @@ function handleRowClick(target) {
   const row = target.closest('tr.row-clickable');
   if (!row) return;
   
-  const id = parseInt(row.dataset.id);
+  const id = row.dataset.id;
   const lancamento = allData.find(d => d.id === id);
   if (lancamento) {
     openModalEdit(lancamento);
