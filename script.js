@@ -105,11 +105,33 @@ function updateFornecedorFilter(data) {
   });
 }
 
+// Persistir filtros no localStorage
+function saveFilters() {
+  const filters = {
+    categoria: document.getElementById('filter-categoria').value,
+    tipo: document.getElementById('filter-tipo').value,
+    fornecedor: document.getElementById('filter-fornecedor').value
+  };
+  localStorage.setItem('ofra-filters', JSON.stringify(filters));
+}
+
+function loadFilters() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('ofra-filters'));
+    if (!saved) return;
+    if (saved.categoria) document.getElementById('filter-categoria').value = saved.categoria;
+    if (saved.tipo) document.getElementById('filter-tipo').value = saved.tipo;
+    if (saved.fornecedor) document.getElementById('filter-fornecedor').value = saved.fornecedor;
+  } catch(e) {}
+}
+
 // Aplicar filtros
 function applyFilters() {
   const categoria = document.getElementById('filter-categoria').value;
   const tipo = document.getElementById('filter-tipo').value;
   const fornecedor = document.getElementById('filter-fornecedor').value;
+  
+  saveFilters();
   
   let filtered = [...allData];
   
@@ -141,10 +163,10 @@ async function fetchData() {
     
     allData = data || [];
     
-    updateCards(allData);
-    updateTable(allData);
     updateCategoryFilter(allData);
     updateFornecedorFilter(allData);
+    loadFilters();
+    applyFilters();
     
     document.getElementById('last-update').textContent = new Date().toLocaleString('pt-BR');
     
