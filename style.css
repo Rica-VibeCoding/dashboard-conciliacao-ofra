@@ -563,3 +563,12 @@ footer {
 .hidden {
   display: none !important;
 }
+
+/* Linha clicável */
+.row-clickable {
+  cursor: pointer !important;
+}
+
+.row-clickable:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
