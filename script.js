@@ -6,6 +6,7 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 
 // Estado global
 let allData = [];
+let editingId = null; // ID do lançamento sendo editado
 
 // Formatar valor em reais (sem símbolo)
 function formatCurrency(value) {
@@ -62,7 +63,7 @@ function updateTable(data) {
   }
   
   tbody.innerHTML = data.map(item => `
-    <tr>
+    <tr class="row-clickable" data-id="${item.id}">
       <td>${formatDate(item.data)}</td>
       <td class="hidden tipo-${item.tipo}">${item.tipo === 'credito' ? '↑ Crédito' : '↓ Débito'}</td>
       <td class="valor-${item.tipo}">${formatCurrency(item.valor)}</td>
@@ -72,6 +73,17 @@ function updateTable(data) {
       <td>${item.descricao || '-'}</td>
     </tr>
   `).join('');
+  
+  // Adicionar event listeners nas linhas
+  document.querySelectorAll('.row-clickable').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = parseInt(row.dataset.id);
+      const lancamento = allData.find(d => d.id === id);
+      if (lancamento) {
+        openModalEdit(lancamento);
+      }
+    });
+  });
 }
 
 // Atualizar filtro de categorias
@@ -161,12 +173,32 @@ const btnNovoLancamento = document.getElementById('btn-novo-lancamento');
 const btnModalClose = document.getElementById('modal-close');
 const btnCancel = document.getElementById('btn-cancel');
 const formLancamento = document.getElementById('form-lancamento');
+const modalTitle = document.querySelector('.modal-header h2');
 
-// Abrir modal
+// Abrir modal para novo lançamento
 function openModal() {
+  editingId = null;
+  modalTitle.textContent = 'Novo Lançamento';
   modalOverlay.classList.add('active');
-  // Preencher data com hoje
+  formLancamento.reset();
   document.getElementById('input-data').value = new Date().toISOString().split('T')[0];
+  document.getElementById('input-valor').focus();
+}
+
+// Abrir modal para editar lançamento
+function openModalEdit(lancamento) {
+  editingId = lancamento.id;
+  modalTitle.textContent = 'Editar Lançamento';
+  modalOverlay.classList.add('active');
+  
+  document.getElementById('input-data').value = lancamento.data;
+  document.getElementById('input-tipo').value = lancamento.tipo;
+  document.getElementById('input-valor').value = lancamento.valor;
+  document.getElementById('input-categoria').value = lancamento.categoria || '';
+  document.getElementById('input-parte').value = lancamento.parte || '';
+  document.getElementById('input-fornecedor').value = lancamento.fornecedor || '';
+  document.getElementById('input-descricao').value = lancamento.descricao || '';
+  
   document.getElementById('input-valor').focus();
 }
 
@@ -174,9 +206,10 @@ function openModal() {
 function closeModal() {
   modalOverlay.classList.remove('active');
   formLancamento.reset();
+  editingId = null;
 }
 
-// Salvar lançamento
+// Salvar lançamento (criar ou atualizar)
 async function saveLancamento(e) {
   e.preventDefault();
   
@@ -195,19 +228,27 @@ async function saveLancamento(e) {
   };
   
   try {
-    const { data, error } = await supabaseClient
-      .from('conciliacao_movelmar_sp')
-      .insert([lancamento])
-      .select();
+    if (editingId) {
+      // UPDATE
+      const { error } = await supabaseClient
+        .from('conciliacao_movelmar_sp')
+        .update(lancamento)
+        .eq('id', editingId);
+      
+      if (error) throw error;
+      alert('Lançamento atualizado com sucesso!');
+    } else {
+      // INSERT
+      const { error } = await supabaseClient
+        .from('conciliacao_movelmar_sp')
+        .insert([lancamento]);
+      
+      if (error) throw error;
+      alert('Lançamento criado com sucesso!');
+    }
     
-    if (error) throw error;
-    
-    // Sucesso - fechar modal e recarregar dados
     closeModal();
     await fetchData();
-    
-    // Feedback visual
-    alert('Lançamento salvo com sucesso!');
     
   } catch (error) {
     console.error('Erro ao salvar:', error);
