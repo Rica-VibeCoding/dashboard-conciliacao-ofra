@@ -121,7 +121,7 @@
                         <a href="mailto:pedidos@movelmar.com.br?cc=ricardo@conectamoveis.net.br&subject=Pedido%20-%20[Nome%20da%20Loja]" class="inline-flex items-center gap-1 text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition">
                             ✉️ Enviar Email
                         </a>
-                        <button onclick="navigator.clipboard.writeText('pedidos@movelmar.com.br')" class="inline-flex items-center gap-1 text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition">
+                        <button type="button" data-copy="pedidos@movelmar.com.br" class="inline-flex items-center gap-1 text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition">
                             📋 Copiar Email
                         </button>
                     </div>
@@ -325,58 +325,93 @@
                 <div>
                     <p class="text-sm text-gray-300 font-medium mb-3">📍 Portábille</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <a href="https://wa.me/555491070174" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Paulo</p>
-                            <p class="text-xs text-gray-400">Diretor</p>
-                        </a>
-                        <a href="https://wa.me/555484110386" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                            <p class="text-xs text-gray-400 mb-1">Diretor</p>
+                            <p class="text-xs text-sky-300 mb-2">(54) 9107-0174</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/555491070174" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="54991070174" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Cristiane</p>
-                            <p class="text-xs text-gray-400">Técnico</p>
-                        </a>
-                        <a href="https://wa.me/555497083920" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                            <p class="text-xs text-gray-400 mb-1">Técnico</p>
+                            <p class="text-xs text-sky-300 mb-2">(54) 8411-0386</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/555484110386" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="54984110386" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Fran</p>
-                            <p class="text-xs text-gray-400">Financeiro</p>
-                        </a>
+                            <p class="text-xs text-gray-400 mb-1">Financeiro</p>
+                            <p class="text-xs text-sky-300 mb-2">(54) 9708-3920</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/555497083920" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="54997083920" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Von Ort -->
                 <div>
                     <p class="text-sm text-gray-300 font-medium mb-3">📍 Von Ort</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <a href="https://wa.me/5546988025538" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Vinicius</p>
-                            <p class="text-xs text-gray-400">Contato</p>
-                        </a>
+                            <p class="text-xs text-gray-400 mb-1">Contato</p>
+                            <p class="text-xs text-sky-300 mb-2">(46) 9880-25538</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/5546988025538" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="46988025538" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Brilhart Color -->
                 <div>
                     <p class="text-sm text-gray-300 font-medium mb-3">📍 Brilhart Color</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <a href="https://wa.me/5555999255763" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Lucas</p>
-                            <p class="text-xs text-gray-400">Comercial</p>
-                        </a>
+                            <p class="text-xs text-gray-400 mb-1">Comercial</p>
+                            <p class="text-xs text-sky-300 mb-2">(55) 99925-5763</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/5555999255763" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="55999255763" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Häfele -->
                 <div>
                     <p class="text-sm text-gray-300 font-medium mb-3">📍 Häfele</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <a href="https://wa.me/5543991553269" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Roberson</p>
-                            <p class="text-xs text-gray-400">Comercial</p>
-                        </a>
+                            <p class="text-xs text-gray-400 mb-1">Comercial</p>
+                            <p class="text-xs text-sky-300 mb-2">(43) 99155-3269</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/5543991553269" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="43991553269" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Omega Viratto -->
                 <div>
                     <p class="text-sm text-gray-300 font-medium mb-3">📍 Omega Viratto</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <a href="https://wa.me/5554992065523" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 text-center transition">
+                        <div class="bg-white/10 rounded-lg p-3 text-center">
                             <p class="font-medium text-sm">Monique</p>
-                            <p class="text-xs text-gray-400">Comercial</p>
-                        </a>
+                            <p class="text-xs text-gray-400 mb-1">Comercial</p>
+                            <p class="text-xs text-sky-300 mb-2">(54) 99206-5523</p>
+                            <div class="flex gap-1 justify-center">
+                                <a href="https://wa.me/5554992065523" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs px-2 py-1 rounded transition">WhatsApp</a>
+                                <button type="button" data-copy="54992065523" class="bg-white/20 hover:bg-white/30 text-white text-xs px-2 py-1 rounded transition">📋 Copiar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,16 +442,34 @@
     </div>
 
     <script>
-        // Função copiar com feedback
-        document.querySelectorAll('button[onclick*="clipboard"]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const toast = document.getElementById('toast');
-                toast.classList.remove('opacity-0');
-                toast.classList.add('opacity-100');
-                setTimeout(() => {
-                    toast.classList.remove('opacity-100');
-                    toast.classList.add('opacity-0');
-                }, 2000);
+        async function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                return;
+            }
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            temp.style.position = 'fixed';
+            temp.style.opacity = '0';
+            document.body.appendChild(temp);
+            temp.focus();
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+        }
+
+        document.querySelectorAll('[data-copy]').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                try {
+                    await copyToClipboard(btn.dataset.copy);
+                    const toast = document.getElementById('toast');
+                    toast.classList.remove('opacity-0');
+                    toast.classList.add('opacity-100');
+                    setTimeout(() => {
+                        toast.classList.remove('opacity-100');
+                        toast.classList.add('opacity-0');
+                    }, 2000);
+                } catch (e) { console.error(e); }
             });
         });
     </script>
